@@ -25,7 +25,6 @@ repos:
   - baseos
   - appstream
   - sig-nfv
-  - okd-copr
   # Temporarily include RHCOS 9 repo for oc & hyperkube
   - openshift
   #- rhel-9.0-server-ose-4.12
@@ -49,7 +48,7 @@ postprocess:
      . /etc/os-release
      cat > /usr/lib/os-release <<EOF
      NAME="${NAME} CoreOS"
-     ID="scos"
+     ID="rhel"
      ID_LIKE="rhel fedora"
      VERSION="${OSTREE_VERSION}"
      VERSION_ID="${OCP_RELEASE}"
@@ -133,7 +132,7 @@ repo-packages:
       - nss-altfiles
       # Use the new containers/toolbox
       - toolbox
-  - repo: okd-copr
+  - repo: openshift
     packages:
       - cri-o
       - cri-tools
