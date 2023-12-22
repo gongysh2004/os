@@ -30,7 +30,8 @@ repos:
   #- rhel-9.0-server-ose-4.12
 
 # We include hours/minutes to avoid version number reuse
-automatic-version-prefix: "4.12.9.<date:%Y%m%d%H%M>"
+# https://semver.org/
+automatic-version-prefix: "4.12.0-0.c9-<date:%Y-%m-%d-%H%M>"
 # This ensures we're semver-compatible which OpenShift wants
 automatic-version-suffix: "-"
 # Keep this is sync with the version in postprocess
