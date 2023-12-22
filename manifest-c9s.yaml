@@ -30,7 +30,7 @@ repos:
   #- rhel-9.0-server-ose-4.12
 
 # We include hours/minutes to avoid version number reuse
-automatic-version-prefix: "412.9.<date:%Y%m%d%H%M>"
+automatic-version-prefix: "4.12.9.<date:%Y%m%d%H%M>"
 # This ensures we're semver-compatible which OpenShift wants
 automatic-version-suffix: "-"
 # Keep this is sync with the version in postprocess
@@ -48,7 +48,8 @@ postprocess:
      . /etc/os-release
      cat > /usr/lib/os-release <<EOF
      NAME="${NAME} CoreOS"
-     ID="rhel"
+     # https://github.com/openshift/cluster-network-operator/blob/release-4.12/bindata/network/multus/multus.yaml#L41C13-L41C17
+     ID="scos"
      ID_LIKE="rhel fedora"
      VERSION="${OSTREE_VERSION}"
      VERSION_ID="${OCP_RELEASE}"
