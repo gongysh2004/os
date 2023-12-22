@@ -31,11 +31,11 @@ repos:
 
 # We include hours/minutes to avoid version number reuse
 # https://semver.org/
-automatic-version-prefix: "412.9.0-<date:%Y-%m-%d-%H%M>"
+automatic-version-prefix: "49.9.0-<date:%Y-%m-%d-%H%M>"
 # This ensures we're semver-compatible which OpenShift wants
 automatic-version-suffix: "-"
 # Keep this is sync with the version in postprocess
-mutate-os-release: "4.12"
+mutate-os-release: "4.9"
 
 postprocess:
   - |
@@ -44,13 +44,13 @@ postprocess:
 
      # Tweak /usr/lib/os-release
      grep -v "OSTREE_VERSION" /etc/os-release > /usr/lib/os-release.stream
-     OCP_RELEASE="4.12"
+     OCP_RELEASE="4.9"
      (
      . /etc/os-release
      cat > /usr/lib/os-release <<EOF
      NAME="${NAME} CoreOS"
      # https://github.com/openshift/cluster-network-operator/blob/release-4.12/bindata/network/multus/multus.yaml#L41C13-L41C17
-     ID="scos"
+     ID="rhel"
      ID_LIKE="rhel fedora"
      VERSION="${OSTREE_VERSION}"
      VERSION_ID="${OCP_RELEASE}"
